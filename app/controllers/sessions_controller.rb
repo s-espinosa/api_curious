@@ -8,11 +8,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    soundcloud_user_info = SoundcloudUser.new(params[:code])
+    soundcloud_user = SoundcloudUser.new(params[:code])
+    user_info = soundcloud_user.get_user_info
 
-    if user = User.from_omniauth(soundcloud_user_info)
+    if user = User.from_omniauth(user_info)
       session[:user_id] = user.id
     end
-    redirect_to root_path
+    redirect_to user_path(user.id)
   end
 end

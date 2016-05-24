@@ -1,0 +1,23 @@
+<h1><%= @user.full_name %></h1>
+<h2>Stored Locally</h2>
+<p>Username: <%= @user.username %></p>
+<p>ID: <%= @user.id %></p>
+<p>Soundcloud UID: <%= @user.uid %></p>
+<p>Oauth Token: <%= @user.oauth_token %></p>
+<p>Refresh Token: <%= @user.refresh_token %></p>
+
+<h2>API Info</h2>
+<h3>User</h3>
+<% @soundcloud_info.each do |key, value| %>
+  <p><%= key %>: <%= value %></p>
+<% end %>
+
+<h3>Followers</h2>
+<% @followers.each do |follower| %>
+  <p><%= follower["full_name"] %></p>
+<% end %>
+
+<h3>Following</h2>
+<% @followings.each do |following| %>
+  <p><%= following["full_name"] %></p>
+<% end %>

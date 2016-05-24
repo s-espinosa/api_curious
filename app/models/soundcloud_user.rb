@@ -2,7 +2,6 @@ class SoundcloudUser
   def initialize(code)
     @code         = code
     @access_token = get_token
-    get_user_info
   end
 
   def get_token
@@ -14,15 +13,21 @@ class SoundcloudUser
   end
 
   def get_user_info
-    "https://api.soundcloud.com/me?oauth_token=#{@access_token}"
+    conn = Faraday.new(:url => 'https://api.soundcloud.com') do |faraday|
+      faraday.request  :url_encoded
+      faraday.response :logger
+      faraday.adapter  Faraday.default_adapter
+    end
 
+    response = conn.get("/me?oauth_token=#{@access_token.access_token}")
+    auth_info = JSON.parse(response.body)
 
-
-
-
-    new_user.uid         = auth_info.uid
-    new_user.username    = auth_info.username
-    new_user.full_name   = auth_info.full_name
-    new_user.oauth_token = auth_info.oauth_token
+    new_user = {}
+    new_user[:uid]           = auth_info["id"]
+    new_user[:username]      = auth_info["username"]
+    new_user[:full_name]     = auth_info["full_name"]
+    new_user[:oauth_token]   = @access_token.access_token
+    new_user[:refresh_token] = @access_token.refresh_token
+    new_user
   end
 end
