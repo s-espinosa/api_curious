@@ -1,4 +1,4 @@
-<h1><%= @user.full_name %></h1>
+<h1><%= @user.full_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</h1>
 <h2>Stored Locally</h2>
 <p>Username: <%= @user.username %></p>
 <p>ID: <%= @user.id %></p>
