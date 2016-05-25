@@ -14,6 +14,14 @@ class SoundcloudService
     client.exchange_token(code: code)["access_token"]
   end
 
+  def find_followers(id, token)
+    parse(get_followers(id, token))
+  end
+
+  def find_following(id, token)
+    parse(get_following(id, token))
+  end
+
   private
 
   def parse(response)
@@ -22,6 +30,14 @@ class SoundcloudService
 
   def get_user(token)
     connection.get("/me?oauth_token=#{token}")
+  end
+
+  def get_followers(id, token)
+    connection.get("/users/#{id}/followers?oauth_token=#{token}")
+  end
+
+  def get_following(id, token)
+    connection.get("/users/#{id}/followers?oauth_token=#{token}")
   end
 
   def connection
