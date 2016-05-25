@@ -1,23 +1,35 @@
 <h1><%= @user.full_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</h1>
-<h2>Stored Locally</h2>
-<p>Username: <%= @user.username %></p>
-<p>ID: <%= @user.id %></p>
-<p>Soundcloud UID: <%= @user.uid %></p>
-<p>Oauth Token: <%= @user.oauth_token %></p>
-<p>Refresh Token: <%= @user.refresh_token %></p>
-
 <h2>API Info</h2>
-<h3>User</h3>
-<% @soundcloud_info.each do |key, value| %>
-  <p><%= key %>: <%= value %></p>
-<% end %>
 
-<h3>Followers</h2>
-<% @followers.each do |follower| %>
-  <p><%= follower["full_name"] %></p>
-<% end %>
-
-<h3>Following</h2>
-<% @followings.each do |following| %>
-  <p><%= following["full_name"] %></p>
-<% end %>
+<p>id: <%= @user.id %></p>
+<p>kind: <%= @user.kind %></p>
+<p>permalink: <%= @user.permalink %></p>
+<p>username: <%= @user.username %></p>
+<p>last_modified: <%= @user.last_modified %></p>
+<p>uri: <%= @user.uri %></p>
+<p>permalink_url: <%= @user.permalink_url %></p>
+<p>avatar_url: <%= @user.avatar_url %></p>
+<p>country: <%= @user.country %></p>
+<p>first_name: <%= @user.first_name %></p>
+<p>last_name: <%= @user.last_name %></p>
+<p>full_name: <%= @user.full_name %></p>
+<p>description: <%= @user.description %></p>
+<p>city: <%= @user.city %></p>
+<p>discogs_name: <%= @user.discogs_name %></p>
+<p>myspace_name: <%= @user.myspace_name %></p>
+<p>website: <%= @user.website %></p>
+<p>website_title: <%= @user.website_title %></p>
+<p>online: <%= @user.online %></p>
+<p>track_count: <%= @user.track_count %></p>
+<p>playlist_count: <%= @user.playlist_count %></p>
+<p>plan: <%= @user.plan %></p>
+<p>public_favorites_count: <%= @user.public_favorites_count %></p>
+<p>subscriptions: <%= @user.subscriptions %></p>
+<p>upload_seconds_left: <%= @user.upload_seconds_left %></p>
+<p>quota: <%= @user.quota %></p>
+<p>private_tracks_count: <%= @user.private_tracks_count %></p>
+<p>private_playlists_count: <%= @user.private_playlists_count %></p>
+<p>primary_email_confirmed: <%= @user.primary_email_confirmed %></p>
+<p>locale: <%= @user.locale %></p>
+<p>followers_count: <%= @user.followers_count %></p>
+<p>followings_count: <%= @user.followings_count %></p>
