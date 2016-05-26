@@ -20,6 +20,11 @@ class User <OpenStruct
   end
 
   def bigger(avatar)
-    avatar.gsub("large", "t500x500")
+    big_avatar = avatar.gsub("large", "t500x500")
+    if big_avatar == "http://a1.sndcdn.com/images/default_avatar_t500x500.png?1464260021"
+      "/assets/generic_user.gif"
+    else
+      big_avatar
+    end
   end
 end
