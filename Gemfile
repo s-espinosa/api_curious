@@ -14,12 +14,13 @@ gem 'figaro'
 gem 'faraday'
 gem 'bourbon'
 gem 'neat'
+gem 'omniauth'
 
 group :development, :test do
   gem 'byebug'
 end
 
-group :development, :test do
+group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
