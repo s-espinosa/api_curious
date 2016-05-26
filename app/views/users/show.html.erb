@@ -1,29 +1,39 @@
-<h1><%= @user.full_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</h1>
-<h2>API Info</h2>
+<header><h1><%= @user.full_name %></h1>
+</header>
+<div class="container">
+  <div class="user-info">
+    <img src="<%= @user.bigger(@user.avatar_url) %>" alt="Avatar">
 
-<img src="<%= @user.bigger(@user.avatar_url) %>" alt="Avatar">
-<p>full_name: <%= @user.full_name %></p>
-<p>username: <%= @user.username %></p>
-<p>permalink_url: <%= @user.permalink_url %></p>
+    <div class="user-details">
+      <p>Soundcloud: <a href="<%= @user.permalink_url %>"><%= @user.username %></a></p>
+      <p><%= @user.city %></p>
+      <p><%= @user.track_count %> tracks</p>
+      <p><%= @user.followers_count %> followers </p>
+      <p>following <%= @user.followings_count %> users </p>
+      <p><%= link_to "Logout", logout_path, method: :delete %></p>
+    </div>
+  </div>
 
-<p>city: <%= @user.city %></p>
-<p>track_count: <%= @user.track_count %></p>
-
-
-<p><%= @user.followers_count %> followers: </p>
-<% @user.followers(session[:token])[:collection].each do |follower| %>
-  <img src="<%= @user.bigger(follower[:avatar_url]) %>" alt="<%= follower[:username] %> Avatar">
-  <p><%= follower[:full_name] %></p>
-  <p><%= follower[:city] %></p>
-  <p><a href="<%= follower[:website] %>"><%= follower[:website_title] %></a></p>
-  <p><a href="<%= follower[:permalink_url] %>">Soundcloud</a></p>
-<% end %>
-
-<p>following <%= @user.followings_count %> users: </p>
-<% @user.following(session[:token])[:collection].each do |following| %>
-  <img src="<%= @user.bigger(following[:avatar_url]) %>" alt="<%= following[:username] %> Avatar">
-  <p><%= following[:full_name] %></p>
-  <p><%= following[:city] %></p>
-  <p><a href="<%= following[:website] %>"><%= following[:website_title] %></a></p>
-  <p><a href="<%= following[:permalink_url] %>">Soundcloud</a></p>
-<% end %>
+  <div class="connections">
+    <div class="followers">
+      <% @user.followers(session[:token])[:collection].each do |follower| %>
+        <div class="image">
+          <img src="<%= @user.bigger(follower[:avatar_url]) %>" alt="<%= follower[:username] %> Avatar">
+          <h3><%= follower[:username] %></h3>
+        </div>
+        <p><%= follower[:city] %></p>
+        <p><a href="<%= follower[:permalink_url] %>">Soundcloud</a></p>
+      <% end %>
+    </div>
+    <div class="following">
+      <% @user.following(session[:token])[:collection].each do |following| %>
+        <div class="image">
+          <img src="<%= @user.bigger(following[:avatar_url]) %>" alt="<%= following[:username] %> Avatar">
+          <h3><%= following[:username] %></h3>
+        </div>
+        <p><%= following[:city] %></p>
+        <p><a href="<%= following[:permalink_url] %>">Soundcloud</a></p>
+      <% end %>
+    </div>
+  </div>
+</div>

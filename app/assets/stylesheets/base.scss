@@ -1,0 +1,134 @@
+$red: #B2292A;
+$orange: #F69831;
+$visual-grid: true !default;
+
+body, html {
+  background-color: $red;
+  padding: 0;
+  margin: 0;
+}
+
+.login {
+  text-align: center;
+  padding-top: 15%;
+
+  a {
+    border: 10px solid white;
+    border-radius: 30px;
+    padding: 0 40px 0 40px;
+    font-size: 14em;
+    background-color: $orange;
+    font-family: "fatfrank", sans-serif;
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.container {
+  @include outer-container(90%);
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  border: 5px solid white;
+  font-family: "fatfrank", sans-serif;
+  display: inline-block;
+  font-size: 4em;
+  color: white;
+  background-color: $orange;
+  padding: 5px 20px 5px 20px;
+  border-radius: 20px;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.user-info {
+  border-radius: 20px;
+  background-color: white;
+  @include row;
+  @include span-columns(12);
+
+  img {
+    @include span-columns(6 of 12);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .user-details {
+    @include span-columns(6 of 12);
+
+    p {
+      font-size: 2em;
+      font-family: "fatfrank", sans-serif;
+      line-height: 60%;
+
+      a {
+        color: white;
+        text-decoration: none;
+        background-color: $orange;
+        border: 3px #DDDDDD solid;
+        border-radius: 10px;
+        padding: 4px 10px 4px 10px;
+      }
+    }
+  }
+}
+
+.connections {
+  margin-top: 20px;
+  @include row;
+  @include span-columns(12);
+  text-align: center;
+  font-family: "fatfrank", sans-serif;
+
+  a {
+    color: white;
+    text-decoration: none;
+    background-color: $orange;
+    border: 3px #DDDDDD solid;
+    border-radius: 10px;
+    padding: 4px 10px 4px 10px;
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+    color: white;
+  }
+
+  image, img {
+    width: 100%;
+    float: left;
+    margin-bottom: 12px;
+  }
+
+  image, h3 {
+    font-size: 2em;
+    font-family: "fatfrank", sans-serif;
+    background-color: rgba(150, 150, 150, .4);
+    position: absolute;
+    padding: 20px;
+    margin: 0;
+    left: 0;
+    width: 100%;
+  }
+
+
+  .followers {
+    border-radius: 20px;
+    background-color: white;
+    @include span-columns(6 of 12)
+  }
+
+  .following {
+    border-radius: 20px;
+    background-color: white;
+    @include span-columns(6 of 12)
+  }
+}

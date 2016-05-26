@@ -37,7 +37,7 @@ class SoundcloudService
   end
 
   def get_following(id, token)
-    connection.get("/users/#{id}/followers?oauth_token=#{token}")
+    connection.get("/users/#{id}/followings?oauth_token=#{token}")
   end
 
   def connection
