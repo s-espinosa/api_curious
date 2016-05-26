@@ -16,6 +16,7 @@
 
   <div class="connections">
     <div class="followers">
+      <h2>Followers</h2>
       <% @user.followers(session[:token])[:collection].each do |follower| %>
         <div class="image">
           <img src="<%= @user.bigger(follower[:avatar_url]) %>" alt="<%= follower[:username] %> Avatar">
@@ -26,6 +27,7 @@
       <% end %>
     </div>
     <div class="following">
+      <h2>Following</h2>
       <% @user.following(session[:token])[:collection].each do |following| %>
         <div class="image">
           <img src="<%= @user.bigger(following[:avatar_url]) %>" alt="<%= following[:username] %> Avatar">
